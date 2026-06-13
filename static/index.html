@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Complaint Management for Apartments</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Apartment Operations</p>
+        <h1>AI Complaint Management</h1>
+      </div>
+      <a class="docs-link" href="/docs">API Docs</a>
+    </header>
+
+    <main class="layout">
+      <section class="panel intake-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">WhatsApp Flow</p>
+            <h2>Simulate Resident Message</h2>
+          </div>
+          <span class="status-pill">Live</span>
+        </div>
+
+        <form id="whatsapp-form" class="form-grid">
+          <label>
+            Resident
+            <input name="resident_name" value="Asha Mehta" required />
+          </label>
+          <label>
+            Flat
+            <input name="apartment_unit" value="B-204" />
+          </label>
+          <label class="full">
+            WhatsApp Complaint
+            <textarea name="message" required>The water pipe is leaking near the lift and it is urgent.</textarea>
+          </label>
+          <button type="submit" class="primary-button">
+            <span aria-hidden="true">+</span>
+            Log via WhatsApp
+          </button>
+        </form>
+
+        <div id="reply" class="reply-box" hidden></div>
+      </section>
+
+      <section class="metrics" aria-label="Dashboard metrics">
+        <article>
+          <span>Total</span>
+          <strong id="metric-total">0</strong>
+        </article>
+        <article>
+          <span>Open</span>
+          <strong id="metric-open">0</strong>
+        </article>
+        <article>
+          <span>In Progress</span>
+          <strong id="metric-progress">0</strong>
+        </article>
+        <article>
+          <span>Urgent</span>
+          <strong id="metric-urgent">0</strong>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Admin Dashboard</p>
+            <h2>Recent Complaints</h2>
+          </div>
+          <button id="refresh" class="secondary-button">
+            <span aria-hidden="true">↻</span>
+            Refresh
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Resident</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Summary</th>
+              </tr>
+            </thead>
+            <tbody id="complaints"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel insights-panel">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Operations</p>
+            <h2>Category Breakdown</h2>
+          </div>
+        </div>
+        <div id="categories" class="bars"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
